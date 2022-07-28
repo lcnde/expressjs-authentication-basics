@@ -5,7 +5,24 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1>Home</h1>
     <a href="/sign-up">Sign up</a>
+
+    <% if (user) { %>
+
+      <h1>Welcome back <%= user.username %></h1>
+      <a href="/log-out">Log Out</a>
+
+    <% } else { %>
+
+      <h1>Please log in</h1>
+      <form action="/log-in" method="post">
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username">
+        <label for="password">Password</label>
+        <input type="text" name="password" id="password">
+        <button type="submit">Log In</button>
+      </form>
+      
+    <% } %>
   </body>
 </html>
